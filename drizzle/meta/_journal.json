@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1716048269466,
+      "tag": "0000_lean_doctor_spectrum",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1716055150444,
+      "tag": "0001_dizzy_katie_power",
+      "breakpoints": true
+    }
+  ]
+}
