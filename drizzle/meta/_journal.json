@@ -15,6 +15,13 @@
       "when": 1716055150444,
       "tag": "0001_dizzy_katie_power",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1716753120963,
+      "tag": "0002_minor_paper_doll",
+      "breakpoints": true
     }
   ]
 }
