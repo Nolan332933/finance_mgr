@@ -9,8 +9,21 @@ import { useGetTransaction } from "@/features/transactions/api/use-get-transacti
 import { useGetTransactions } from "@/features/transactions/api/use-get-transactions";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useBulkDeleteTransactions } from "@/features/transactions/api/use-bulk-delete-transactions";
+import { useState } from "react";
+
+enum VARIANTS {
+  LIST = "LIST",
+  IMPORT = "IMPORT",
+}
+
+const INITIAL_IMPORT_RESULT = {
+  data: [],
+  error: [],
+  meta: {},
+};
 
 const TransactionsPage = () => {
+  const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST);
   const newTransaction = useNewTransaction();
   const deleteTransactions = useBulkDeleteTransactions();
   const transactionsQuery = useGetTransactions();
@@ -33,6 +46,14 @@ const TransactionsPage = () => {
           </CardContent>
         </Card>
       </div>
+    );
+  }
+
+  if (variant === VARIANTS.IMPORT) {
+    return (
+      <>
+        <div>This is a screen of import</div>
+      </>
     );
   }
 
