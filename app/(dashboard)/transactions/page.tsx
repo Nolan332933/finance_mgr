@@ -11,6 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useBulkDeleteTransactions } from "@/features/transactions/api/use-bulk-delete-transactions";
 import { useState } from "react";
 import { UploadButton } from "./upload-button";
+import { ImportCard } from "./import-card";
 
 enum VARIANTS {
   LIST = "LIST",
@@ -25,9 +26,17 @@ const INITIAL_IMPORT_RESULT = {
 
 const TransactionsPage = () => {
   const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST);
+  const [importResults, setImportResults] = useState(INITIAL_IMPORT_RESULT);
   const onUpload = (results: typeof INITIAL_IMPORT_RESULT) => {
+    // console.log({ results });
+    setImportResults(results);
     setVariant(VARIANTS.IMPORT);
   };
+  const onCancelImport = () => {
+    setImportResults(INITIAL_IMPORT_RESULT);
+    setVariant(VARIANTS.LIST);
+  };
+
   const newTransaction = useNewTransaction();
   const deleteTransactions = useBulkDeleteTransactions();
   const transactionsQuery = useGetTransactions();
@@ -56,7 +65,11 @@ const TransactionsPage = () => {
   if (variant === VARIANTS.IMPORT) {
     return (
       <>
-        <div>This is a screen of import</div>
+        <ImportCard
+          data={importResults.data}
+          onCancel={onCancelImport}
+          onSubmit={() => {}}
+        />
       </>
     );
   }
